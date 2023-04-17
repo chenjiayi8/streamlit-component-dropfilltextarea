@@ -19,7 +19,7 @@ jobs:
           python-version: "3.x"
       - name: install node
         run: |
-          sudo apt install nodejs npm
+          sudo apt install nodejs npm -y
           npm --version
       - name: build streamlit-dropfill-textarea JS
         run: |
