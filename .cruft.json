@@ -1,0 +1,20 @@
+{
+  "template": "https://github.com/blackary/cookiecutter-streamlit-component/",
+  "commit": "c972054b7b0890a1aa1c02e792bedc71c525ea87",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "author_name": "Jiayi Chen",
+      "author_email": "chenjiayi_344@hotmail.com",
+      "project_name": "Streamlit Component DropFillTextarea",
+      "package_name": "streamlit-component-dropfilltextarea",
+      "import_name": "st_dropfill_textarea",
+      "description": "Streamlit Component DropFillTextarea allows you to drag and drop files onto a text area, making it easy to fill in large amounts of text quickly. With dropfill_textarea, users can quickly populate text areas with pre-existing text files, reducing manual input and increasing efficiency. The component also offers flexible layout options, allowing users to customize the label and text area's size, position, and other properties. Whether you're a developer or a user, dropfill_textarea is the perfect solution for simplifying your workflow.",
+      "deployment_via_github_actions": "y",
+      "working_with_dataframes": "n",
+      "open_source_license": "MIT license",
+      "_template": "https://github.com/blackary/cookiecutter-streamlit-component/"
+    }
+  },
+  "directory": null
+}
