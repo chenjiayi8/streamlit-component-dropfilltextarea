@@ -35,11 +35,13 @@ else:
 def st_dropfill_textarea(label, value,
                          placeholder="",
                          layout="column",
+                         labelWidth=None,
                          height=200,
                          key=None):
     component_value = _component_func(
         label=label,
         value=value,
+        labelWidth=labelWidth,
         placeholder=placeholder,
         layout=layout,
         height=height,
@@ -59,10 +61,22 @@ if not _RELEASE:
     st.write(f"Returned text: {returnText}")
 
     st.subheader("Component with row layout")
-    label = 'row layout: '
-    text = ''
-    returnText = st_dropfill_textarea(label, text,
+    label = 'short row: '
+    text_short = ''
+    text_short = st_dropfill_textarea(label, text_short,
                                       placeholder="Type at here",
                                       layout="row",
+                                      labelWidth=120,
                                       height=200)
-    st.write(f"Returned text: {returnText}")
+    label = 'looooong row:'
+    text_long = ''
+    text_long = st_dropfill_textarea(label, text_long,
+                                     placeholder="Type at here",
+                                     layout="row",
+                                     labelWidth=120,
+                                     height=200)
+    text_default = ""
+    text_default = st.text_area("streamlit textarea", text_default, height=200)
+    st.write(f"Returned short row: {text_short}")
+    st.write(f"Returned long row: {text_long}")
+    st.write(f"Returned streamlit textarea: {text_default}")

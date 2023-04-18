@@ -3,12 +3,14 @@
     <div class="label" ref="label">
       {{ label }}
     </div>
-    <textarea
-      ref="textarea"
-      v-model="value"
-      @change="handlesChange"
-      @drop="handleDrop"
-    />
+    <div class="textarea-container" ref="textarea-container">
+      <textarea
+        ref="textarea"
+        v-model="value"
+        @change="handlesChange"
+        @drop="handleDrop"
+      />
+    </div>
   </div>
 </template>
 
@@ -50,6 +52,7 @@
           "--container-height": this.args.height * 1.15 + "px",
           "--textarea-height": this.args.height + "px",
           "--align-items": "left",
+          "--background-color": "#f0f2f6",
         };
         if (this.args.layout !== "column") {
           propObj["--flex-direction"] = "row";
@@ -67,17 +70,33 @@
           const labelRef = this.$refs["label"];
           const textareaRef = this.$refs["textarea"];
           const height = labelRef.clientHeight + textareaRef.clientHeight;
-          const width = containerRef.clientWidth - 16 * 2 - 2;
+          const width = containerRef.clientWidth - 16 * 2 - 4;
           containerRef.style.height = height + "px";
           textareaRef.style.width = width + "px";
+          textareaRef.style.height = this.args.height - 16 + "px";
         }, 500);
       },
       renderRow() {
         setTimeout(() => {
           const containerRef = this.$refs["container"];
+          const labelRef = this.$refs["label"];
+          const textareaContainerRef = this.$refs["textarea-container"];
           const textareaRef = this.$refs["textarea"];
-          const height = textareaRef.clientHeight * 1.1;
+          const labelWidth = this.args.labelWidth;
+          let width;
+          if (labelWidth !== null) {
+            labelRef.style.width = labelWidth + "px";
+            width = containerRef.clientWidth - labelWidth - 16 * 2 - 8;
+          } else {
+            width =
+              containerRef.clientWidth - labelRef.clientWidth - 16 * 2 - 8;
+          }
+          const height = textareaContainerRef.clientHeight;
+
           containerRef.style.height = height + "px";
+          textareaContainerRef.style.width = width + "px";
+          textareaContainerRef.style.height = this.args.height + "px";
+          textareaRef.style.height = this.args.height - 16 * 2 + "px";
         }, 500);
       },
 
@@ -187,14 +206,47 @@
   .label {
     margin-right: var(--margin-right);
     font: var(--font);
+    white-space: pre;
+  }
+
+  .textarea-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   textarea {
-    width: 98%;
+    width: 100%;
     height: var(--textarea-height);
     resize: none;
     padding: 16px;
+    border: none;
+    border-radius: 6px;
     color: var(--text-color);
     background-color: var(--background-color);
     font: var(--font);
+    scrollbar-width: none; /* hide the scrollbar when out of focus */
+    overflow: hidden; /* hide the overflow when out of focus */
+  }
+  textarea:focus {
+    outline: 1px solid red;
+  }
+
+  textarea:hover {
+    scrollbar-width: auto; /* show the scrollbar when in focus */
+    overflow: auto; /* show the overflow when in focus */
+  }
+
+  textarea::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  textarea::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-color: rgba(143, 141, 141, 0.8);
+  }
+
+  textarea::-webkit-scrollbar-track {
+    border-radius: 100px;
   }
 </style>
