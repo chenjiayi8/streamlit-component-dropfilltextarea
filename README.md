@@ -25,7 +25,7 @@ st.write(value)
 
 ### Use with layout column (default) or row
 
-```
+```python
 st.subheader("Component with column layout (default)")
 returnText = st_dropfill_textarea('column layout: ', '',
                                     placeholder="Type at here",
@@ -42,7 +42,7 @@ st.write(f"Returned text: {returnText}")
 
 ### Align multi rows of textarea
 
-```
+```python
 labelWidth = 120
 label = 'short row: '
 text_short = ''
