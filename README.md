@@ -10,6 +10,8 @@ pip install streamlit-component-dropfilltextarea
 
 ## Usage instructions
 
+### Use like default textarea
+
 ```python
 import streamlit as st
 
@@ -18,4 +20,43 @@ from st_dropfill_textarea import st_dropfill_textarea
 value = st_dropfill_textarea("Your label", "")
 
 st.write(value)
+
+```
+
+### Use with layout column (default) or row
+
+```
+st.subheader("Component with column layout (default)")
+returnText = st_dropfill_textarea('column layout: ', '',
+                                    placeholder="Type at here",
+                                    height=200)
+st.write(f"Returned text: {returnText}")
+
+st.subheader("Component with row layout")
+returnText = st_dropfill_textarea('row layout: ', '',
+                                    layout="row",
+                                    height=200)
+st.write(f"Returned text: {returnText}")
+
+```
+
+### Align multi rows of textarea
+
+```
+labelWidth = 120
+label = 'short row: '
+text_short = ''
+text_short = st_dropfill_textarea(label, text_short,
+                                    placeholder="",
+                                    layout="row",
+                                    labelWidth=labelWidth,
+                                    height=200)
+label = 'looooong row:'
+text_long = ''
+text_long = st_dropfill_textarea(label, text_long,
+                                    layout="row",
+                                    labelWidth=labelWidth,
+                                    height=200)
+
+
 ```
