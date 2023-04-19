@@ -7,6 +7,7 @@
       <textarea
         ref="textarea"
         v-model="value"
+        :placeholder="args.placeholder"
         @change="handlesChange"
         @drop="handleDrop"
       />
@@ -74,7 +75,7 @@
           containerRef.style.height = height + "px";
           textareaRef.style.width = width + "px";
           textareaRef.style.height = this.args.height - 16 + "px";
-        }, 500);
+        }, 100);
       },
       renderRow() {
         setTimeout(() => {
@@ -97,7 +98,7 @@
           textareaContainerRef.style.width = width + "px";
           textareaContainerRef.style.height = this.args.height + "px";
           textareaRef.style.height = this.args.height - 16 * 2 + "px";
-        }, 500);
+        }, 100);
       },
 
       rerender() {

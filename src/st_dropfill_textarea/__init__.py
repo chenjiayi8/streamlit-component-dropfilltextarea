@@ -64,14 +64,13 @@ if not _RELEASE:
     label = 'short row: '
     text_short = ''
     text_short = st_dropfill_textarea(label, text_short,
-                                      placeholder="Type at here",
+                                      placeholder="",
                                       layout="row",
                                       labelWidth=120,
                                       height=200)
     label = 'looooong row:'
     text_long = ''
     text_long = st_dropfill_textarea(label, text_long,
-                                     placeholder="Type at here",
                                      layout="row",
                                      labelWidth=120,
                                      height=200)
