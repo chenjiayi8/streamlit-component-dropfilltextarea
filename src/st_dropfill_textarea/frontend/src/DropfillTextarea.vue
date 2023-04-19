@@ -181,6 +181,7 @@
             .handleDocx,
           "text/html": this.handleHtml,
           "text/plain": this.handlPlainText,
+          "application/json": this.handlPlainText,
         };
         return files[file.type];
       },
