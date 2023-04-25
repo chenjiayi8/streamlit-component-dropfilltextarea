@@ -227,7 +227,7 @@
     background-color: var(--background-color);
     font: var(--font);
     scrollbar-width: none; /* hide the scrollbar when out of focus */
-    overflow: hidden; /* hide the overflow when out of focus */
+    overflow: auto; /* hide the overflow when out of focus */
   }
   textarea:focus {
     outline: 1px solid red;
@@ -235,7 +235,14 @@
 
   textarea:hover {
     scrollbar-width: auto; /* show the scrollbar when in focus */
-    overflow: auto; /* show the overflow when in focus */
+  }
+
+  textarea:not(:hover)::-webkit-scrollbar {
+    background-color: transparent;
+  }
+
+  textarea:not(:hover)::-webkit-scrollbar-thumb {
+    background-color: transparent;
   }
 
   textarea::-webkit-scrollbar {
