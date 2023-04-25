@@ -13,6 +13,7 @@
       />
     </div>
   </div>
+  <div v-if="fileName.length > 0">File name: {{ fileName }}</div>
 </template>
 
 <script>
@@ -32,8 +33,10 @@
 
     data() {
       const value = ref("");
+      const fileName = ref("");
       return {
         value,
+        fileName,
       };
     },
 
@@ -191,8 +194,12 @@
         event.stopPropagation(); // stops the browser from redirecting.
         const file = event.dataTransfer.files[0];
         const handle = this.fileHandler(file);
-        if (handle !== undefined) handle(file);
-        else this.updateValue("Dropped file type not supported");
+        if (handle !== undefined) {
+          handle(file);
+          this.fileName = file.name;
+        } else {
+          this.updateValue("Dropped file type not supported");
+        }
       },
     },
   };
